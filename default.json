@@ -14,9 +14,8 @@
   "packageRules": [
     {
       "description": "Automatically merge minor and patch-level updates",
-      "matchUpdateTypes": ["minor", "patch", "digest"],
-      "automerge": true,
-      "automergeType": "pr"
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
     },
     {
       "description": "Use custom regex versioning for bitnami images",
@@ -27,6 +26,7 @@
     {
       "description": "automerge digests via branch to reduce noise",
       "matchUpdateTypes": ["digest"],
+      "automerge": true,
       "automergeType": "branch"
     }
   ],
