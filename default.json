@@ -36,6 +36,7 @@
       "fileMatch": ["(^|/|\\.)Dockerfile$", "(^|/)Dockerfile\\.[^/]*$"],
       "matchStrings": [
         "#\\s*renovate:(?:\\s*datasource=(?<datasource>[a-z-]+?))(?:\\s*depName=(?<depName>[\\S]+?))(?:\\s*(?:lookupName|packageName)=(?<packageName>[\\S]+?))?(?:\\s*versioning=(?<versioning>[^\\s]+?))?\\s*\\n(?:[^=]+=\\s*['\"]?(?<currentValue>[\\S]+?)['\"])\\s*\\n*",
+        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)( extractVersion=(?<extractVersion>.+?))?( versioning=(?<versioning>.+?))?\\s(ENV|ARG) .*_VERSION=\"?(?<currentValue>.+?)\"?\\s",
         "# renovate: datasource=(?<datasource>[a-z-].*?) depName=(?<depName>.*?) versioning=(?<versioning>.*?)\\s?(ENV|ARG) .+?_VERSION=\"?(?<currentValue>.+?)\"?"
       ],
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
