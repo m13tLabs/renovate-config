@@ -6,7 +6,12 @@
     "config:recommended",
     ":dependencyDashboard"
   ],
-  "automergeSchedule": ["after 5am and before 5pm every weekday"],
+  "schedule": ["every weekday", "every weekend"],
+  "automergeSchedule": [
+    "after 10pm every weekday",
+    "before 7am every weekday",
+    "every weekend"
+  ],
   "separateMinorPatch": true,
   "platformAutomerge": true,
   "automergeType": "pr",
