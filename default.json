@@ -40,7 +40,8 @@
       "description": "Update _VERSION variables in Dockerfiles",
       "fileMatch": ["(^|/|\\.)Dockerfile$", "(^|/)Dockerfile\\.[^/]*$"],
       "matchStrings": [
-        "#\\s*renovate:(?:\\s*datasource=(?<datasource>[a-z-]+?))(?:\\s*depName=(?<depName>[\\S]+?))(?:\\s*(?:lookupName|packageName)=(?<packageName>[\\S]+?))?(?:\\s*versioning=(?<versioning>[^\\s]+?))?\\s*\\n(?:[^=]+=\\s*['\"]?(?<currentValue>[\\S]+?)['\"])\\s*\\n*",
+        "# renovate: datasource=(?<datasource>[^\\s]+) depName=(?<depName>[^\\s]+)(?:\\s+allowedVersions=(?<allowedVersions>[^\\s]+))?\\s+ARG\\s+(?<argName>[A-Z0-9_]+)=(?<currentValue>[^\\s]+)",
+        "# renovate:(?:\\s*datasource=(?<datasource>[a-z-]+?))(?:\\s*depName=(?<depName>[\\S]+?))(?:\\s*(?:lookupName|packageName)=(?<packageName>[\\S]+?))?(?:\\s*versioning=(?<versioning>[^\\s]+?))?\\s*\\n(?:[^=]+=\\s*['\"]?(?<currentValue>[\\S]+?)['\"])\\s*\\n*",
         "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)( extractVersion=(?<extractVersion>.+?))?( versioning=(?<versioning>.+?))?\\s(ENV|ARG) .*_VERSION=\"?(?<currentValue>.+?)\"?\\s",
         "# renovate: datasource=(?<datasource>[a-z-].*?) depName=(?<depName>.*?) versioning=(?<versioning>.*?)\\s?(ENV|ARG) .+?_VERSION=\"?(?<currentValue>.+?)\"?"
       ],
