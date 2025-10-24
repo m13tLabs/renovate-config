@@ -42,8 +42,8 @@
       "matchStrings": [
         "# renovate:\\s+datasource=(?<datasource>[^\\s]+)\\s+depName=(?<depName>[^\\s]+)(?:\\s+allowedVersions=(?<allowedVersions>[^\\s]+))?\\s+(?:ARG|ENV)\\s+(?<argName>[A-Z0-9_]+)=(?<currentValue>[^\\s]+)"
       ],
-      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
-      "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
+      "extractVersionTemplate": "{{{currentValue}}}",
+      "versioningTemplate": "docker"
     },
     {
       "description": "Update image variables in YAML files",
