@@ -40,10 +40,10 @@
       "description": "Update _VERSION variables in Dockerfiles",
       "fileMatch": ["(^|/|\\.)Dockerfile$", "(^|/)Dockerfile\\.[^/]*$"],
       "matchStrings": [
-        "# renovate:\\s+datasource=(?<datasource>[^\\s]+)\\s+depName=(?<depName>[^\\s]+)(?:\\s+allowedVersions=(?<allowedVersions>[^\\s]+))?\\s+(?:ARG|ENV)\\s+(?<argName>[A-Z0-9_]+)=(?<currentValue>[^\\s]+)"
-      ],
-      "extractVersionTemplate": "{{{currentValue}}}",
-      "versioningTemplate": "docker"
+         "# renovate: datasource=(?<datasource>[^\\s]+)\\s+depName=(?<depName>[^\\s]+)(?:\\s+allowedVersions=(?<allowedVersions>[^\\s]+))?\\s+(?:ARG|ENV)\\s+(?<argName>[A-Z0-9_]+)=(?<currentValue>[^\\s]+)"
+       ],
+       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
+       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}docker{{/if}}"
     },
     {
       "description": "Update image variables in YAML files",
@@ -63,6 +63,30 @@
       ],
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
-    }
+    },
+    {
+        "matchDatasources": ["docker"],
+        "matchPackageNames": ["eclipse-temurin"],
+        "matchCurrentValue": "/^17\\./",
+        "allowedVersions": "/^17\\./"
+     },
+     {
+        "matchDatasources": ["docker"],
+        "matchPackageNames": ["eclipse-temurin"],
+        "matchCurrentValue": "/^21\\./",
+        "allowedVersions": "/^21\\./"
+     },
+     {
+        "matchDatasources": ["docker"],
+        "matchPackageNames": ["eclipse-temurin"],
+        "matchCurrentValue": "/^24\\./",
+        "allowedVersions": "/^24\\./"
+     },
+     {
+        "matchDatasources": ["docker"],
+        "matchPackageNames": ["eclipse-temurin"],
+        "matchCurrentValue": "/^25\\./",
+        "allowedVersions": "/^25\\./"
+     }
   ]
 }
