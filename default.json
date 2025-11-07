@@ -33,7 +33,31 @@
       "matchUpdateTypes": ["digest"],
       "automerge": true,
       "automergeType": "branch"
-    }
+    },
+    {
+        "matchDatasources": ["docker"],
+        "matchPackageNames": ["eclipse-temurin"],
+        "matchCurrentValue": "/^17\\./",
+        "allowedVersions": "/^17\\./"
+     },
+     {
+        "matchDatasources": ["docker"],
+        "matchPackageNames": ["eclipse-temurin"],
+        "matchCurrentValue": "/^21\\./",
+        "allowedVersions": "/^21\\./"
+     },
+     {
+        "matchDatasources": ["docker"],
+        "matchPackageNames": ["eclipse-temurin"],
+        "matchCurrentValue": "/^24\\./",
+        "allowedVersions": "/^24\\./"
+     },
+     {
+        "matchDatasources": ["docker"],
+        "matchPackageNames": ["eclipse-temurin"],
+        "matchCurrentValue": "/^25\\./",
+        "allowedVersions": "/^25\\./"
+     }
   ],
   "regexManagers": [
     {
@@ -63,30 +87,6 @@
       ],
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
-    },
-    {
-        "matchDatasources": ["docker"],
-        "matchPackageNames": ["eclipse-temurin"],
-        "matchCurrentValue": "/^17\\./",
-        "allowedVersions": "/^17\\./"
-     },
-     {
-        "matchDatasources": ["docker"],
-        "matchPackageNames": ["eclipse-temurin"],
-        "matchCurrentValue": "/^21\\./",
-        "allowedVersions": "/^21\\./"
-     },
-     {
-        "matchDatasources": ["docker"],
-        "matchPackageNames": ["eclipse-temurin"],
-        "matchCurrentValue": "/^24\\./",
-        "allowedVersions": "/^24\\./"
-     },
-     {
-        "matchDatasources": ["docker"],
-        "matchPackageNames": ["eclipse-temurin"],
-        "matchCurrentValue": "/^25\\./",
-        "allowedVersions": "/^25\\./"
-     }
+    }
   ]
 }
