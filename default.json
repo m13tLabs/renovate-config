@@ -14,6 +14,7 @@
   ],
   "separateMinorPatch": true,
   "platformAutomerge": true,
+  "rollbackPrs": true,
   "automergeType": "pr",
   "rebaseWhen": "auto",
   "packageRules": [
