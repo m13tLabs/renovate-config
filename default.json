@@ -65,7 +65,7 @@
       "description": "Update _VERSION variables in Dockerfiles",
       "fileMatch": ["(^|/|\\.)Dockerfile$", "(^|/)Dockerfile\\.[^/]*$"],
       "matchStrings": [
-         "# renovate: datasource=(?<datasource>[^\\s]+)\\s+depName=(?<depName>[^\\s]+)(?:\\s+allowedVersions=(?<allowedVersions>[^\\s]+))?\\s+(?:ARG|ENV)\\s+(?<argName>[A-Z0-9_]+)=(?<currentValue>[^\\s]+)"
+         "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)( versioning=(?<versioning>.+?))?( extractVersion=(?<extractVersion>.+?))?( allowedVersions=(?<allowedVersions>.+?))?( registryUrl=(?<registryUrl>.*?))?\\s(ENV|ARG) .*_VERSION=[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
        ],
        "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
        "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}docker{{/if}}"
