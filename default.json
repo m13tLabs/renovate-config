@@ -74,17 +74,9 @@
       "description": "Update image variables in YAML files",
       "fileMatch": ["\\.y[a]?ml$", "\\.y[a]?ml\\.tpl$"],
       "matchStrings": [
-        "# renovate:\\s+datasource=(?<datasource>[^\\s]+)\\s+depName=(?<depName>[^\\s]+)(?:\\s+allowedVersions=(?<allowedVersions>[^\\s]+))?\\s+(?:ARG|ENV)\\s+(?<argName>[A-Z0-9_]+)=(?<currentValue>[^\\s]+)"
-      ],
-      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}"
-    },
-    {
-      "customType": "regex",
-      "description": "Update version variables in YAML files",
-      "fileMatch": ["\\.y[a]?ml$", "\\.y[a]?ml\\.tpl$"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)\\s+(.*?):\\s?(?<currentValue>.+)",
-        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+)\\s+(.*?):\\s(\"|')(?<currentValue>.+)(\"|')"
+        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)( versioning=(?<versioning>.+?))?( extractVersion=(?<extractVersion>.+?))?( allowedVersions=(?<allowedVersions>.+?))?( registryUrl=(?<registryUrl>.*?))?\\s.*_VERSION:\\s?['\"]?(?<currentValue>[^\"'\\s]+)['\"]?",
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( registryUrl=(?<registryUrl>.*?))?( extractVersion=(?<extractVersion>.+?))?( versioning=(?<versioning>.+?))?( allowedVersions=(?<allowedVersions>.+?))?\\s+(.*_VERSION|.*?Version|default|version|value|image|tag):\\s?[\"']?(?<currentValue>[^\"'\\s]+)[\"']?",
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( extractVersion=(?<extractVersion>.+?))?( versioning=(?<versioning>.+?))?( registryUrl=(?<registryUrl>.*?))?( allowedVersions=(?<allowedVersions>.+?))?\\s+(.*_VERSION|.*?Version|default|version|value|image|tag):\\s?[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
       ],
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
