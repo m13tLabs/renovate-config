@@ -1,7 +1,7 @@
 name: Renovate Config Release
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       release_type:
         description: 'Type of release to build: patch, minor, major, or custom'
