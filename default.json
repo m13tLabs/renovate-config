@@ -60,26 +60,38 @@
         "allowedVersions": "/^25\\./"
      }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "description": "Update _VERSION variables in Dockerfiles",
-      "fileMatch": ["(^|/|\\.)Dockerfile$", "(^|/)Dockerfile\\.[^/]*$"],
+      "managerFilePatterns": ["/(^|/|\\.)Dockerfile$/", "/(^|/)Dockerfile\\.[^/]*$/"],
       "matchStrings": [
-         "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)( versioning=(?<versioning>.+?))?( extractVersion=(?<extractVersion>.+?))?( allowedVersions=(?<allowedVersions>.+?))?( registryUrl=(?<registryUrl>.*?))?\\s(ENV|ARG) .*_VERSION=[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
-       ],
-       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
-       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}docker{{/if}}"
+        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)( versioning=(?<versioning>.+?))?( extractVersion=(?<extractVersion>.+?))?( allowedVersions=(?<allowedVersions>.+?))?( registryUrl=(?<registryUrl>.*?))?\\s(ENV|ARG) .*_VERSION=[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
+      ],
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}docker{{/if}}"
     },
     {
+      "customType": "regex",
       "description": "Update image variables in YAML files",
-      "fileMatch": ["\\.y[a]?ml$", "\\.y[a]?ml\\.tpl$"],
+      "managerFilePatterns": ["/\\.y[a]?ml$/", "/\\.y[a]?ml\\.tpl$/"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)( versioning=(?<versioning>.+?))?( extractVersion=(?<extractVersion>.+?))?( allowedVersions=(?<allowedVersions>.+?))?( registryUrl=(?<registryUrl>.*?))?\\s.*_VERSION:\\s?['\"]?(?<currentValue>[^\"'\\s]+)['\"]?",
         "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( registryUrl=(?<registryUrl>.*?))?( extractVersion=(?<extractVersion>.+?))?( versioning=(?<versioning>.+?))?( allowedVersions=(?<allowedVersions>.+?))?\\s+(.*_VERSION|.*?Version|default|version|value|image|tag):\\s?[\"']?(?<currentValue>[^\"'\\s]+)[\"']?",
         "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( extractVersion=(?<extractVersion>.+?))?( versioning=(?<versioning>.+?))?( registryUrl=(?<registryUrl>.*?))?( allowedVersions=(?<allowedVersions>.+?))?\\s+(.*_VERSION|.*?Version|default|version|value|image|tag):\\s?[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
       ],
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
-      "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    },
+    {
+      "customType": "regex",
+      "description": "Update _VERSION variables in Java sources",
+      "managerFilePatterns": ["/\\.java$/", "/\\.gradle$/"],
+      "matchStrings": [
+        "// renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( extractVersion=(?<extractVersion>.+?))?( versioning=(?<versioning>.+?))?( registryUrl=(?<registryUrl>.*?))?( allowedVersions=(?<allowedVersions>.+?))?\\s+String .*_VERSION = \"(?<currentValue>.+)\";"
+      ],
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}maven{{/if}}"
     }
   ]
 }
